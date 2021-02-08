@@ -71,6 +71,7 @@ The following questions should be answered in the report.
 5. Since this is your first own web API, there are probably things you would solve in another way, looking back at this assignment. Write your thoughts about this.
 6. Which "linguistic design rules" you implemented? List them here and motivate "for each" of them very briefly why you chose them? Remember that you must consider "at least" FIVE "linguistic design rules" as the linguistic quality of your API.
 7. Did you do something extra besides the fundamental requirements? Explain them.
+8. A separate **LastName_API_Documentation.txt** where you will list your resource URIs and their corresponding brief descriptions. If you have an URI being used with multiple HTTP methods, you need to describe each pair of HTTP METHOD : URI separately. For example, if you have a resource URI as www.example.com/fish/types and you have HTTP methods GET, PUT, and DELETE to perform something on that resource, you need to briefly describe each pair of Method and URI, e.g., what GET www.example.com/fish/types does, what PUT www.example.com/fish/types does, what DELETE www.example.com/fish/types does, and so on.
 
 
 ## Examination
