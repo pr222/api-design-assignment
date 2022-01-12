@@ -92,15 +92,15 @@ We will look at the "linguistic design" and "structure" of the API and the code,
 
 You hand in your assignment by doing a Merge Request (MR). Make sure you do the following:
 
-* Create a MR from your 'master'-branch to your 'release'-branch.
-* Add title: "Submission, Assignment 2"
+* Create a MR from your 'main'-branch to your 'lnu/submit'-branch.
+* Add title: "Submission, API design assignment"
 * Check the boxes in the description by adding a 'x' between the brackets.
 * Make sure to fill in the Assignment Report. (The questions are in html-comments so that you can leave them there. Make sure to **not** write your code inside comments!)
 * Select the Milestone to which you would like to make the submission. Important!
 
-Do not add anything else. Do not merge or close your MR. Doing that will count as if you have withdrawn your submission.
+Do not add anything else. Do not close your MR. Doing that will count as if you have withdrawn your submission.
 
-You can continue to push to the master branch and thoose commits will be added to the submission. If you commit after deadline, the pipeline will indicate that your submission is late.
+You can continue to push to the main branch and thoose commits will be added to the submission. If you commit after deadline, the pipeline will indicate that your submission is late.
 
 You can edit the MR and the Assignment report after the MR is opened.
 
