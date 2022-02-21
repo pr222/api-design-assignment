@@ -1,0 +1,23 @@
+{
+  "name": "api-design-assignment",
+  "version": "1.0.0",
+  "description": "RESTful API design",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.lnu.se:1dv027/student/pr222ja/api-design-assignment.git"
+  },
+  "keywords": [
+    "api",
+    "rest",
+    "restful",
+    "hateoas"
+  ],
+  "author": "Pauliina Raitaniemi",
+  "license": "MIT",
+  "dependencies": {
+  }
+}
