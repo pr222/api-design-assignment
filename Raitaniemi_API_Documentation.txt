@@ -1,0 +1,208 @@
+List your resource URIs and their corresponding brief descriptions. 
+If you have a URI being used with multiple HTTP methods, 
+you need to describe each pair of HTTP METHOD : URI separately. 
+
+For example, if you have a resource URI as www.example.com/fish/types
+and you have HTTP methods GET, PUT, POST, and DELETE to perform something
+on that resource, you need to describe each pair of Method and URI briefly,
+e.g., what GET www.example.com/fish/types does, 
+what PUT www.example.com/fish/types does, 
+what DELETE www.example.com/fish/types does, and so on.
+
+
+METHOD uri-link
+does...
+
+GET /shoppinglists
+Shoppinglists = [
+  {
+    "shoppinglistId" : "iid",
+    "listName" : name,
+    "links" : [
+      {
+        "href" : /shoppinglists/{shoppinglistId}
+        "rel" : "self",
+        "method" : "GET"
+      },
+      {
+        "href" : /shoppinglists/{shoppinglistId}
+        "rel" : "self",
+        "method" : "PUT",
+        "description": "Edit products in list"        
+      }
+    ],
+    "products" : [
+      {
+        "productName" : name,
+        "productId" : id,
+        "links" : [
+          "href" : /products/{productId}
+          "rel" : self
+        ]
+      }
+    ]
+    "Links" : [
+      {
+        "self" : /shoppinglists/{shoppinglistId}
+        "ref" : "self"
+      },
+      {
+        "products" : [
+          {
+            "productId" : /products/{productId}
+            "rel" : productName
+          }, {
+            "productId" : /products/{productId}
+            "rel" : productName
+          }
+        ]
+      }      
+    ]
+  },
+   {
+    "shoppinglistId" : "iid",
+    "listName" : name,
+    "Links" : [
+      {
+        "self" : /shoppinglists/{shoppinglistId}
+        "ref" : "self"
+      },
+      {
+        "products" : [
+          {
+            "productName" : /products/{productId}
+            "rel" : "self"
+          }, {
+            "productName" : /products/{productId}
+            "rel" : 
+          }, {
+            "productName" : /products/{productId}
+            "rel" : 
+          },
+        ]
+      }      
+    ]
+  }
+]
+
+
+
+
+GET    /shoppinglists                       //get all
+POST   /shoppinglists                       //create new
+GET    /shoppinglists/{shoppinglistId}      //get one
+PUT    /shoppinglists/{shoppinglistId}      //update
+DELETE /shoppinglists/{shoppinglistId}      //delete one
+
+GET    /products                //get all
+POST   /products                //create/add new product 
+GET    /products/{productId}    //get one product
+PUT    /products/{productId}    //update
+DELETE /products/{productId}    //delete one
+
+GET    /stores          //get all 
+POST   /stores          //create/add new store
+GET    /stores/store    //get one store
+PUT    /stores/store    //update
+DELETE /stores/store    //delete one
+
+
+POST /stores/willys
+Store {
+  "storeName" : "Willys",
+  "sectionOrder" : [
+    "Produce", "Snacks", "Softdrinks", "Bread", 
+    "Dairy", "Condiments", "Frozen food", "Pasta", 
+    "Frozen desserts", "Candy" 
+  ]
+}
+
+POST /products
+Product = {
+  "productName" : "Yoghurt",
+  "storeSection" : "Dairy",
+  "stores" : [
+    {
+      "store" : "willys",
+      "price" : "22.50"
+    },
+    {
+      "store" : "stora-coop",
+      "price" : "25.80"
+    }
+  ]
+}
+
+POST /shoppinglists
+Shoppinglist = {
+  "name" : "Friday Night"
+}
+
+
+Body-example for adding new product to a shoppinglist (PUT /shoppinglists/{shoppinglistId}/)
+Shoppinglist = [
+  "productId", "productId", "productId"
+]
+
+
+PRODUCTS
+products : [
+  {
+    links : [
+      {
+        "self" : href
+        rel : self
+        metod : GET
+      }, {
+        "create" : href
+        rel : collection
+        method : POST
+      }, {
+        "product" : href/{id}
+        "rel" : item?
+        method : GET
+      }, {
+        "product" : href/{id}
+        "rel" : item?
+        method : PUT
+      }, {
+        "product" : href/{id}
+        "rel" : item?
+        method : DELETE
+      }
+    ]
+  }
+]
+
+
+
+PRODUCT
+product : 
+  {
+    "name" :
+    "id" :
+    "section" :
+    "stores" : [
+      {
+        "self" : href,
+        "price" : 00
+      }
+    ],
+    "links" : [
+      {
+        "self" : href,
+        rel : self
+        method : GET          
+      },
+      {
+        "self" : href,
+        rel : self
+        method : PUT          
+      },
+      {
+        "self" : href,
+        rel : self
+        method : DELETE          
+      }
+    ]
+  }
