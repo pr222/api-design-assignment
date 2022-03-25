@@ -1,6 +1,7 @@
 import express from 'express'
 import helmet from 'helmet'
 import logger from 'morgan'
+import { router } from './routes/router.js'
 import { connectDB } from './config/mongoose.js'
 
 /**
@@ -25,7 +26,7 @@ const main = async () => {
   app.use(express.json())
 
   // Middlewares
-  // app.use('/', router)
+  app.use('/', router)
 
   // Handle error responses.
   app.use(function (err, req, res, next) {
