@@ -1,11 +1,15 @@
 import express from 'express'
 import helmet from 'helmet'
 import logger from 'morgan'
+import { connectDB } from './config/mongoose.js'
 
 /**
  * Runs application server.
  */
 const main = async () => {
+  // Make sure DB is running before all else.
+  await connectDB()
+
   const app = express()
   const PORT = process.env.PORT || 5000
 
