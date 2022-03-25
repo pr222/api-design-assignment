@@ -34,9 +34,9 @@ export const connectDB = async () => {
   })
 
   // Make the connection
-  // return mongoose.connect(process.env.CONNECTION_STRING, {
-  //   useCreateIndex: true,
-  //   useNewUrlParser: true,
-  //   useUnifiedTopology: true
-  // })
+  return mongoose.connect(process.env.CONNECTION_STRING, {
+    // useCreateIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
 }

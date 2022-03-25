@@ -14,7 +14,7 @@ const main = async () => {
   const app = express()
   const PORT = process.env.PORT || 5000
 
-  // Set logger
+  // Set logger.
   app.use(logger('dev'))
 
   // Set more secure HTTP-headers
@@ -22,10 +22,13 @@ const main = async () => {
 
   // TODO: Add cors.
 
-  // Enable application/json
+  // Enable urlencoding for register/login users.
+  // app.use(express.urlencoded({ extended: false }))
+
+  // Enable application/json.
   app.use(express.json())
 
-  // Middlewares
+  // Routes.
   app.use('/', router)
 
   // Handle error responses.
