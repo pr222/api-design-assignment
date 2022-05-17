@@ -31,7 +31,7 @@ export class ShoppinglistsController {
 
       await shoppinglist.save()
 
-      res.json({ Created: shoppinglist })
+      res.status(201).json({ id: shoppinglist.id })
     } catch (error) {
       next(error)
     }

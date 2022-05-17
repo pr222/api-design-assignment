@@ -17,20 +17,20 @@ export class UsersController {
     try {
       console.log(req.body.email, req.body.password)
       const user = await User.authenticate(req.body.email, req.body.password)
-      // console.log('got user')
+
       const payload = {
         email: user.email
       }
-      // console.log(payload)
+
       const secret = process.env.ACCESS_TOKEN_SECRET
 
       const privateKey = Buffer.from(secret, 'base64')
-      console.log(privateKey)
+
       const token = jwt.sign(payload, privateKey, {
         algorithm: 'RS256',
         expiresIn: process.env.ACCESS_TOKEN_LIFE
       })
-      // console.log('TOKEN', token)
+
       res
         .status(200)
         .json({
