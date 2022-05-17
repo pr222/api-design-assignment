@@ -67,6 +67,14 @@ export class ShoppinglistsController {
    * @param {Function} next - Express next-middleware function.
    */
   async remove (req, res, next) {
-    res.json({ message: 'You deleted a shoppinglist!' })
+    try {
+      const shoppinglist = await Shoppinglist.findOne({ _id: req.params.id })
+
+      await shoppinglist.remove()
+
+      res.status(204).json({})
+    } catch (error) {
+      next(error)
+    }
   }
 }
