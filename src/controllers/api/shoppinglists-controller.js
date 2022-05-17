@@ -12,7 +12,15 @@ export class ShoppinglistsController {
    * @param {Function} next - Express next-middleware function.
    */
   async getAll (req, res, next) {
-    res.json({ message: 'You got all the shoppinglists!' })
+    try {
+      const shoppinglists = await Shoppinglist.find({})
+
+      // TODO: Add format and info to response
+
+      res.status(200).json(shoppinglists)
+    } catch (error) {
+      next(error)
+    }
   }
 
   /**
