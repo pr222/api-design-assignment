@@ -4,9 +4,7 @@ const ShoppinglistsSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, 'Name is required.'],
-    trim: true,
-    unique: true,
-    lowercase: true
+    trim: true
   },
   products: [{
     product: String,

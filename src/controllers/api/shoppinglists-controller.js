@@ -45,7 +45,15 @@ export class ShoppinglistsController {
    * @param {Function} next - Express next-middleware function.
    */
   async getOne (req, res, next) {
-    res.json({ message: 'You got ONE shoppinglist!' })
+    try {
+      const shoppinglist = await Shoppinglist.findOne({ _id: req.params.id })
+
+      // TODO: Add format and info to response
+
+      res.status(200).json(shoppinglist)
+    } catch (error) {
+      next(error)
+    }
   }
 
   /**
@@ -56,7 +64,18 @@ export class ShoppinglistsController {
    * @param {Function} next - Express next-middleware function.
    */
   async update (req, res, next) {
-    res.json({ message: 'You updated a shoppinglist!' })
+    try {
+      await Shoppinglist.updateOne(
+        { _id: req.params.id }, {
+          // Values to update on specific shoppinglist:
+          name: req.body.name,
+          products: req.body.products
+        })
+
+      res.status(204).json({})
+    } catch (error) {
+      next(error)
+    }
   }
 
   /**
