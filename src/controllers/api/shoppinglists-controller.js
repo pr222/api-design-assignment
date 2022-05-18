@@ -1,3 +1,4 @@
+import fetch from 'node-fetch'
 import { Shoppinglist } from '../../models/shoppinglists.js'
 
 /**
@@ -79,6 +80,17 @@ export class ShoppinglistsController {
           name: req.body.name,
           products: req.body.products
         })
+
+      const shoppinglist = await Shoppinglist.findOne({ _id: req.params.id })
+
+      // Publish to all subscribers the newly updated shoppinglist.
+      await fetch(`${process.env.BASE_URL}/webhook/publish`, {
+        method: 'POST',
+        body: JSON.stringify({
+          data: shoppinglist
+        }),
+        headers: { 'Content-Type': 'application/json' }
+      })
 
       res.status(204).json({})
     } catch (error) {
