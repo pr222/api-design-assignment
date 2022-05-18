@@ -1,8 +1,5 @@
 import mongoose from 'mongoose'
 import bcrypt from 'bcrypt'
-// import validator from 'validator'
-
-// const { isEmail } = validator
 
 const UsersSchema = new mongoose.Schema({
   email: {
@@ -10,8 +7,7 @@ const UsersSchema = new mongoose.Schema({
     required: [true, 'Email is required.'],
     trim: true,
     unique: true,
-    lowercase: true//,
-    // validate: [isEmail, '{VALUE} is not a valid email.']
+    lowercase: true
   },
   password: {
     type: String,

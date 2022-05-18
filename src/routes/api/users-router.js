@@ -6,7 +6,7 @@ export const router = express.Router()
 const controller = new UsersController()
 
 // Get all shoppinglists
-router.get('/', (req, res) => res.json({ message: 'You got to the users!' }))
+router.get('/', (req, res, next) => res.json({ message: 'You got to the users!' }))
 
 // Create new user
 router.post('/register', (req, res, next) => controller.register(req, res, next))
