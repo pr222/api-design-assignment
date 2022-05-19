@@ -16,9 +16,70 @@ export class ShoppinglistsController {
     try {
       const shoppinglists = await Shoppinglist.find({})
 
-      // TODO: Add format and info to response
+      const response = {
+        shoppinglists: shoppinglists,
+        links: {
+          self: {
+            href: `${process.env.BASE_URL}/shoppinglists`,
+            method: 'GET',
+            rel: 'self',
+            description: 'Get all shoppinglists.'
+          },
+          parent: {
+            href: `${process.env.BASE_URL}`,
+            method: 'GET',
+            rel: 'parent',
+            description: 'API root.'
+          },
+          create: {
+            href: `${process.env.BASE_URL}/shoppinglists`,
+            method: 'POST',
+            rel: 'create',
+            description: 'Create a new shoppinglist.',
+            schema: {
+              name: 'String',
+              products: [
+                {
+                  product: 'String',
+                  price: 'Number',
+                  store: 'String'
+                }
+              ]
+            }
+          },
+          shoppinglist: {
+            href: `${process.env.BASE_URL}/shoppinglists/{id}`,
+            method: 'GET',
+            rel: 'collection_item',
+            links: {
+              update: {
+                href: `${process.env.BASE_URL}/shoppinglists/{id}`,
+                method: 'PUT',
+                rel: 'update',
+                description: 'Replace a specific shoppinglist with an updated one.',
+                schema: {
+                  name: 'String',
+                  products: [
+                    {
+                      product: 'String',
+                      price: 'Number',
+                      store: 'String'
+                    }
+                  ]
+                }
+              },
+              delete: {
+                href: `${process.env.BASE_URL}/shoppinglists/{id}`,
+                method: 'DELETE',
+                rel: 'delete',
+                description: 'Delete a specific shoppinglist.'
+              }
+            }
+          }
+        }
+      }
 
-      res.status(200).json(shoppinglists)
+      res.status(200).json(response)
     } catch (error) {
       next(error)
     }
@@ -40,6 +101,13 @@ export class ShoppinglistsController {
 
       await shoppinglist.save()
 
+      await Shoppinglist.updateOne(
+        { _id: shoppinglist.id }, {
+          // Values to update on specific shoppinglist:
+          name: req.body.name,
+          products: req.body.products
+        })
+
       res.status(201).json({ id: shoppinglist.id })
     } catch (error) {
       next(error)
@@ -57,9 +125,53 @@ export class ShoppinglistsController {
     try {
       const shoppinglist = await Shoppinglist.findOne({ _id: req.params.id })
 
-      // TODO: Add format and info to response
+      const response = {
+        name: shoppinglist.name,
+        id: shoppinglist.id,
+        products: shoppinglist.products.map(item => ({
+          product: item.product,
+          price: item.price,
+          store: item.store
+        })),
+        updatedAt: shoppinglist.updatedAt,
+        createdAt: shoppinglist.createdAt,
+        links: {
+          self: {
+            href: `${process.env.BASE_URL}/shoppinglists/${shoppinglist.id}`,
+            method: 'GET',
+            rel: 'self'
+          },
+          parent: {
+            href: `${process.env.BASE_URL}/shoppinglists`,
+            method: 'GET',
+            rel: 'parent'
+          },
+          update: {
+            href: `${process.env.BASE_URL}/shoppinglists/${shoppinglist.id}`,
+            method: 'PUT',
+            rel: 'update',
+            description: 'Replace a specific shoppinglist with an updated one.',
+            schema: {
+              name: 'String',
+              products: [
+                {
+                  product: 'String',
+                  price: 'Number',
+                  store: 'String'
+                }
+              ]
+            }
+          },
+          delete: {
+            href: `${process.env.BASE_URL}/shoppinglists/${shoppinglist.id}`,
+            method: 'DELETE',
+            rel: 'delete',
+            description: 'Delete a specific shoppinglist.'
+          }
+        }
+      }
 
-      res.status(200).json(shoppinglist)
+      res.status(200).json(response)
     } catch (error) {
       next(error)
     }
@@ -89,7 +201,10 @@ export class ShoppinglistsController {
         body: JSON.stringify({
           data: shoppinglist
         }),
-        headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${process.env.HOOK_SECRET}`
+        }
       })
 
       res.status(204).json({})

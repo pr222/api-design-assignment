@@ -49,7 +49,21 @@ export class WebhookController {
    * @param {Function} next - Express next-middleware function.
    */
   async publish (req, res, next) {
+    // Check bearer token
+    const authorization = req.headers.authorization?.split(' ')
+
+    if (authorization?.[0] !== 'Bearer') {
+      next(createHttpError(401, 'Bearer token is missing'))
+      return
+    }
+
     try {
+      // Check hook secret
+      if (authorization[1] !== process.env.HOOK_SECRET) {
+        next(createHttpError(403, 'Hook validation failed.'))
+        return
+      }
+
       const subscribers = await Subscriber.find({})
 
       subscribers.forEach(async subscriber => {
