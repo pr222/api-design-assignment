@@ -1,35 +1,26 @@
-List your resource URIs and their corresponding brief descriptions. 
-If you have a URI being used with multiple HTTP methods, 
-you need to describe each pair of HTTP METHOD : URI separately. 
-
-For example, if you have a resource URI as www.example.com/fish/types
-and you have HTTP methods GET, PUT, POST, and DELETE to perform something
-on that resource, you need to describe each pair of Method and URI briefly,
-e.g., what GET www.example.com/fish/types does, 
-what PUT www.example.com/fish/types does, 
-what DELETE www.example.com/fish/types does, and so on.
-
+GET /
+Returns a json-response with links and descriptions of what to do with the API.
 
 GET /shoppinglists
-does...
+Returns all available shoppinglists with their contents.
 
 POST /shoppinglists
-does...
+Creates a new shoppinglist and returns the id of it in the repsonse body. Only for logged in users.
 
 GET /shoppinglists/shoppinglist/{id}
-does...
+Returns a specific shoppinglist by providing its id in the URI.
 
 PUT /shoppinglists/shoppinglist/{id}
-does...
+Updates a shoppinglist by providing a new array of products to replace the old state of the shoppinglist. Only for logged in users.
 
 DELETE /shoppinglists/shoppinglist/{id}
-does...
+Deletes a shoppinglist by id. Only for logged in users.
 
 POST /users/register
-does...
+By providing an email and password in the request body a new user will get registered.
 
 POST /users/login
-does...
+Logs in a user when the correct email and password are provided in the body. The response will return a JWT-token that can be used to make API-calls that are only for logged in users.
 
 POST /webhook/register
 A loggedin user can make a request to this link and in the body provide email, destination and secret.
