@@ -7,13 +7,13 @@ Returns all available shoppinglists with their contents.
 POST /shoppinglists
 Creates a new shoppinglist and returns the id of it in the repsonse body. Only for logged in users.
 
-GET /shoppinglists/shoppinglist/{id}
+GET /shoppinglists/{id}
 Returns a specific shoppinglist by providing its id in the URI.
 
-PUT /shoppinglists/shoppinglist/{id}
+PUT /shoppinglists/{id}
 Updates a shoppinglist by providing a new array of products to replace the old state of the shoppinglist. Only for logged in users.
 
-DELETE /shoppinglists/shoppinglist/{id}
+DELETE /shoppinglists/{id}
 Deletes a shoppinglist by id. Only for logged in users.
 
 POST /users/register

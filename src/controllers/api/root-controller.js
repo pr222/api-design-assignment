@@ -24,7 +24,7 @@ export class RootController {
               shoppinglists: {
                 href: `${process.env.BASE_URL}/shoppinglists`,
                 method: 'GET',
-                rel: 'collection',
+                rel: 'shoppinglists',
                 description: 'Get all shoppinglists.'
               },
               create: {
@@ -46,7 +46,7 @@ export class RootController {
               shoppinglist: {
                 href: `${process.env.BASE_URL}/shoppinglists/{id}`,
                 method: 'GET',
-                rel: 'collection_item',
+                rel: 'shoppinglist',
                 links: {
                   update: {
                     href: `${process.env.BASE_URL}/shoppinglists/{id}`,

@@ -50,7 +50,7 @@ export class ShoppinglistsController {
           shoppinglist: {
             href: `${process.env.BASE_URL}/shoppinglists/{id}`,
             method: 'GET',
-            rel: 'collection_item',
+            rel: 'shoppinglist',
             links: {
               update: {
                 href: `${process.env.BASE_URL}/shoppinglists/{id}`,
