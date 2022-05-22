@@ -1,5 +1,7 @@
 # How to test this assignment
-<!-- TODO: Add any needed instuctions for how to test the assignment. -->
+Download the postman-collection and run all the tests. For methods that needs a logged in user, make sure to first make the login-call before proceeding with the rest. 
+
+If you want to check what the web-hook sends to a subscriber you can use the "Register new subcriber" in the Webhook folder in the collection and in the request body add a destination. For example, you can go to [webhook.site](https://webhook.site/) and copy the URL from there and paste it to the destination in the request body. The webhook will publish the event to the subscribers when doing the PUT method on a shoppinglist.
 
 # API design assignment
 

@@ -1,0 +1,904 @@
+{
+	"info": {
+		"_postman_id": "b68ffcaf-b789-4495-b235-70520c5087cf",
+		"name": "API-assingment-pr222ja",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Shoppinglists",
+			"item": [
+				{
+					"name": "Get all shoppinglists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/shoppinglists",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shoppinglists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new empty shoppinglist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"The empty one\",\n    \"products\" : []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/shoppinglists",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shoppinglists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new shoppinglist with 1 product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"Another starter list\",\n    \"products\" : [\n        {\n            \"product\" : \"smör\",\n            \"price\" : \"41\",\n            \"store\" :\"Willys\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/shoppinglists",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shoppinglists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new shoppinglist with several products",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"Full Breakfast\",\n    \"products\" : [\n        {\n            \"product\" : \"smör\",\n            \"price\" : \"41\",\n            \"store\" :\"Willys\"\n        },\n        {\n            \"product\" : \"bröd\",\n            \"price\" : \"35\",\n            \"store\" :\"Willys\"\n        },\n        {\n            \"product\" : \"slami\",\n            \"price\" : \"15\",\n            \"store\" :\"Lidl\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/shoppinglists",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shoppinglists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one shoppinglist With ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/shoppinglists/628395519832e20e852d17c7",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shoppinglists",
+								"628395519832e20e852d17c7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update one shoppinglist With ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Updated Breakfast\",\n  \"products\": [\n    {\n      \"product\": \"Smör\",\n      \"price\": 41,\n      \"store\": \"Willys\"\n    },\n    {\n      \"product\": \"Bröd\",\n      \"price\": 35,\n      \"store\": \"Willys\"\n    },\n    {\n      \"product\": \"Salami\",\n      \"price\": 15,\n      \"store\": \"Lidl\"\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/shoppinglists/628395419832e20e852d17c4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shoppinglists",
+								"628395419832e20e852d17c4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete one shoppinglist With ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/shoppinglists/628395419832e20e852d17c4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shoppinglists",
+								"628395419832e20e852d17c4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Register new user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"example6@example.com\",\n    \"password\" : \"example123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"    pm.collectionVariables.set(\"access_token\", jsonData.access_token);",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"example1@example.com\",\n    \"password\" : \"example123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Expected failing requests",
+			"item": [
+				{
+					"name": "Register new user that already exists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 409\", function () {",
+									"    pm.response.to.have.status(409);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"example1@example.com\",\n    \"password\" : \"example123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete one shoppinglist - Without bearer token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/shoppinglists/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shoppinglists",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete one shoppinglist - With wrong token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV4YW1wbGVAZXhhbXBsZS5jb20iLCJpYXQiOjE2NDgyMzQ3NDcsImV4cCI6MTY0ODIzODM0N30.h3mNkgmeUrEoBR_bMUhE80IXgOsEqggWZxJy4Dp-noy340V2wjXjtRPwriB4F487daHfdDALlN-PH-YZsVRJSm2SWnu2BzkbDhzmTXnxxrSHEf3-wIjVafa8t7yZWjv3tVEtqKEAoLhprClJBFCbNPNJBzIbqYVjOdT29C1Eh4sAKKKsiaK7nctPIlGoKERxHjlsdEeTK4oy91jx769H61lX4pG1puKulyAGpWQRrK0s55Z5cITEDPgKJWIdndshFLEYTrSjCtHXYbjWLLL8wL6hDMpMD05VJmfOJ8Mx-KXN9VSMum-VasOGkbZW9-8W5AyEr29AW19hJXfnkLsetQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/shoppinglists/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shoppinglists",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update one shoppinglist - Without bearer token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/shoppinglists/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shoppinglists",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update one shoppinglist - With wrong token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV4YW1wbGVAZXhhbXBsZS5jb20iLCJpYXQiOjE2NDgyMzQ3NDcsImV4cCI6MTY0ODIzODM0N30.h3mNkgmeUrEoBR_bMUhE80IXgOsEqggWZxJy4Dp-noy340V2wjXjtRPwriB4F487daHfdDALlN-PH-YZsVRJSm2SWnu2BzkbDhzmTXnxxrSHEf3-wIjVafa8t7yZWjv3tVEtqKEAoLhprClJBFCbNPNJBzIbqYVjOdT29C1Eh4sAKKKsiaK7nctPIlGoKERxHjlsdEeTK4oy91jx769H61lX4pG1puKulyAGpWQRrK0s55Z5cITEDPgKJWIdndshFLEYTrSjCtHXYbjWLLL8wL6hDMpMD05VJmfOJ8Mx-KXN9VSMum-VasOGkbZW9-8W5AyEr29AW19hJXfnkLsetQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/shoppinglists/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shoppinglists",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new shoppinglist - Without bearer token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/shoppinglists",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shoppinglists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new shoppinglist - Without bearer token Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV4YW1wbGVAZXhhbXBsZS5jb20iLCJpYXQiOjE2NDgyMzQ3NDcsImV4cCI6MTY0ODIzODM0N30.h3mNkgmeUrEoBR_bMUhE80IXgOsEqggWZxJy4Dp-noy340V2wjXjtRPwriB4F487daHfdDALlN-PH-YZsVRJSm2SWnu2BzkbDhzmTXnxxrSHEf3-wIjVafa8t7yZWjv3tVEtqKEAoLhprClJBFCbNPNJBzIbqYVjOdT29C1Eh4sAKKKsiaK7nctPIlGoKERxHjlsdEeTK4oy91jx769H61lX4pG1puKulyAGpWQRrK0s55Z5cITEDPgKJWIdndshFLEYTrSjCtHXYbjWLLL8wL6hDMpMD05VJmfOJ8Mx-KXN9VSMum-VasOGkbZW9-8W5AyEr29AW19hJXfnkLsetQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/shoppinglists",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shoppinglists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Publish event to subscribers Without Bearer Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"secret\" : \"mango\",\n    \"data\" : {\n        \"name\": \"Breakfast\",\n        \"products\": [\n            {\n            \"product\": \"smör\",\n            \"price\": 41,\n            \"store\": \"Willys\"\n            },\n            {\n            \"product\": \"bröd\",\n            \"price\": 35,\n            \"store\": \"Willys\"\n            },\n            {\n            \"product\": \"salami\",\n            \"price\": 15,\n            \"store\": \"Lidl\"\n            }\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/webhook/publish",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"webhook",
+								"publish"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Publish event to subscribers With wrong Bearer Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "mangosforallthepeople",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"secret\" : \"mango\",\n    \"data\" : {\n        \"name\": \"Breakfast\",\n        \"products\": [\n            {\n            \"product\": \"smör\",\n            \"price\": 41,\n            \"store\": \"Willys\"\n            },\n            {\n            \"product\": \"bröd\",\n            \"price\": 35,\n            \"store\": \"Willys\"\n            },\n            {\n            \"product\": \"salami\",\n            \"price\": 15,\n            \"store\": \"Lidl\"\n            }\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/webhook/publish",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"webhook",
+								"publish"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Webhook",
+			"item": [
+				{
+					"name": "Register new subscriber",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"example5@example.com\",\n    \"destination\" : \"\",\n    \"secret\" : \"MangoesForAllThePeoples\" \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/webhook/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"webhook",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Go to API-root",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://api-design-assignment.herokuapp.com",
+			"type": "string"
+		},
+		{
+			"key": "access_token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
